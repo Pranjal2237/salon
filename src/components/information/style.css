@@ -1,0 +1,63 @@
+.enquiryForm{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .inputBlock>input,.inputBlock>textarea,.inputBlock>select{
+    width: 100%;
+    margin-top: 0.5rem;
+    outline: none;
+    border: none;
+    border: 1px solid #666666;
+    background: transparent;
+    padding: 1rem;
+  }
+  
+  .inputBlock>textarea{
+    height: 70px;
+  }
+  
+  .inputBlock label{
+    color: #666666;
+  }
+  
+  .inputBlock span,.check span{
+    color: red;
+  }
+  
+  .btn{
+    padding: 0.75rem 0;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fff;
+    width: 100%;
+  }
+
+  .terms-condition h1{
+    font-size: 40px;
+    font-weight: 400;
+    margin-top: 1rem;
+  }
+
+  .terms-condition>div{
+    margin-top: 30px;
+    font-size: 16px;
+    color: #777;
+    font-weight: 400;
+  }
+
+  .terms-condition p{
+    margin-bottom: 5px;
+  }
+
+  .check{
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .radio{
+    display: flex;
+    gap: 1rem;
+    margin-top: 0;
+  }

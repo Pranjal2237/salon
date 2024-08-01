@@ -1,0 +1,30 @@
+.navigation{
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
+    padding-block: 1rem;
+}
+
+.navigation-logo{
+    width: 150px;
+}
+
+.navigation-logo>a>img{
+    width: 100%;
+}
+
+.navigation-lists{
+    display: flex;
+    gap: 3rem;
+    font-weight: var(--fw-bolder);
+    font-size: var(--fs-xs);
+}
+
+.navigation-lists>a{
+    color: #fff;
+}

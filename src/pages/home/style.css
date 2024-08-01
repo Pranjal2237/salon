@@ -1,0 +1,280 @@
+.home-banner{
+    position: relative;
+}
+
+.banner-content{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+}
+
+.banner-content p{
+    font-size: 25px;
+    width: 90%;
+    font-style: italic;
+    line-height: 30px;
+    word-spacing: 5px;
+}
+
+.banner-content a{
+    font-size: 25px;
+    margin-block: 1rem;
+    display: inline-block;
+    color: #FF0044;
+    position: relative;
+}
+
+.banner-content a::after{
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 70%;
+    height: 5px;
+    background-color: #FF0044;
+    z-index: 100;
+}
+
+.banner-content h1{
+    font-size: 80px;
+    font-weight: 700;
+    margin-top: 2rem;
+}
+
+.home-need-heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    padding-block: 2rem;
+}
+
+.home-need-heading h4{
+    color: #626262;
+    font-weight: 600;
+}
+
+.home-need-heading h2{
+    font-size: 28px;
+    color: #373737;
+}
+
+.home-hair-services-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.service-image{
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.service-image img{
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.service-image img:hover{
+    transform: scale(1.2);
+}
+
+.service-section{
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.service-name{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #626262;
+    padding: 2.5rem 2.5rem;
+    font-size: 25px;
+    font-weight: var(--fw-bolder);
+    position: relative;
+}
+
+.service-section a{
+    background-color: #FF0044;
+    color: #fff;
+    padding: 1rem;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.service-image:hover .service-section a{
+    display: flex;
+}
+
+.home-about-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.home-about-container h2{
+    font-size: 35px;
+    line-height: 40px;
+    font-weight: 400;
+}
+
+.home-about-container p{
+    color: #626262;
+    line-height: 23px;
+    font-size: 16px;
+}
+
+.home-about-description-box{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 3rem;
+    margin-top: 1rem;
+}
+
+.home-about-card{
+    padding: 1.5rem;
+}
+
+.home-about-card:hover{
+    border: 5px solid yellow;
+}
+
+.card-logo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.card-logo img{
+    width: 20%;
+    position: relative;
+}
+
+.underline{
+    height: 4px;
+    background-color: #2283d4;
+    width: 15%;
+}
+
+
+.card-content{
+    margin-top: 1.5rem;
+}
+
+.home-price-section{
+    background-image: url('../../assets/images/background.jpg');
+}
+
+.section-heading button{
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+    background-color: #408bd1;
+    color: #fff;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.section-heading img{
+    width: 18px;
+}
+
+
+.home-contact-section{
+    background-image: url('../../assets/images/background.jpg');
+}
+
+.image-layer{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.home-contact-description-box{
+    display: flex;
+    gap: 3rem;
+    margin-top: 5rem;
+}
+
+.home-contact-locations-box{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.location-container{
+    display: flex;
+    gap: 1.5rem;
+}
+
+.location-logo{
+    width: 35px;
+}
+
+.location-logo img{
+    width: 100%;
+}
+
+.location-content p{
+    color: #626262;
+    font-weight: 400;
+    margin-block: 0.5rem;
+    line-height: 20px;
+}
+
+.location-content a{
+    display: inline-block;
+    color: #FF0044;
+    margin-block: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.location-content a:hover{
+    color: #373737;
+}
+
+.home-contact-form-box{
+    flex: 1 1 60%;
+}
+
+.price-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-top: 5rem;
+}
+
+.opacity-container{
+    position: absolute;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+}
