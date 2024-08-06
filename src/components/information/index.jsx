@@ -2,15 +2,15 @@ import React from "react";
 import "./style.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import axios from 'axios'
+import axios from "axios";
 
 const initialValues = {
   name: "",
   email: "",
   phone: "",
-  toggleTerms:false,
-  toggleNote:false,
-  pickedTerms:""
+  toggleTerms: false,
+  toggleNote: false,
+  pickedTerms: "",
 };
 
 const FormSchema = yup.object({
@@ -19,7 +19,9 @@ const FormSchema = yup.object({
   email: yup.string().email().required("Please enter your email"),
 });
 
-const Information = () => {
+const Information = ({
+  setDetails,
+}) => {
   let {
     values,
     handleBlur,
@@ -32,27 +34,33 @@ const Information = () => {
     initialValues,
     validationSchema: FormSchema,
     onSubmit: async (values, { resetForm }) => {
-      const {data}=await axios.get("http://localhost:4000/api/getkey")
-      const {data:{order}}=await axios.post("http://localhost:4000/api/booking",{values});
+      setDetails({
+        name: values.name,
+        phone: values.phone,
+        email: values.email,
+      });
+      const { data } = await axios.get("http://localhost:4000/api/getkey");
+      const {
+        data: { order },
+      } = await axios.post("http://localhost:4000/api/booking", { values });
       const options = {
-        key: data.key, 
-        amount: "50000", 
+        key: data.key,
+        amount: "50000",
         currency: "INR",
         name: "Acme Corp",
         description: "Test Transaction",
         image: "https://example.com/your_logo",
-        order_id: order.id, 
+        order_id: order.id,
         callback_url: "http://localhost:4000/api/paymentVarification",
         notes: {
-            address: "Razorpay Corporate Office"
+          address: "Razorpay Corporate Office",
         },
         theme: {
-            color: "#121212"
-        }
-    };
-    const razor = new window.Razorpay(options);
-    console.log(razor);
-    razor.open();
+          color: "#121212",
+        },
+      };
+      const razor = new window.Razorpay(options);
+      razor.open();
       resetForm();
     },
   });
@@ -169,32 +177,35 @@ const Information = () => {
             {/* {errors.email && touched.email ? <p>{errors.email}</p> : null} */}
           </div>
           <div>
-            <p>We have 48 hours cancellation/rescheduling policy, do you agree? <span>*</span></p>
+            <p>
+              We have 48 hours cancellation/rescheduling policy, do you agree?{" "}
+              <span>*</span>
+            </p>
             <div className="radio">
-            <div className="check">
-            <input
-              type="radio"
-              autoComplete="off"
-              name="pickedTerms"
-              value="yes"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <label htmlFor="name">yes</label>
-            {/* {errors.email && touched.email ? <p>{errors.email}</p> : null} */}
-          </div>
-          <div className="check">
-            <input
-              type="radio"
-              autoComplete="off"
-              name="pickedTerms"
-              value="no"
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            <label htmlFor="name">no</label>
-            {/* {errors.email && touched.email ? <p>{errors.email}</p> : null} */}
-          </div>
+              <div className="check">
+                <input
+                  type="radio"
+                  autoComplete="off"
+                  name="pickedTerms"
+                  value="yes"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                <label htmlFor="name">yes</label>
+                {/* {errors.email && touched.email ? <p>{errors.email}</p> : null} */}
+              </div>
+              <div className="check">
+                <input
+                  type="radio"
+                  autoComplete="off"
+                  name="pickedTerms"
+                  value="no"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                <label htmlFor="name">no</label>
+                {/* {errors.email && touched.email ? <p>{errors.email}</p> : null} */}
+              </div>
             </div>
           </div>
         </div>
@@ -206,11 +217,7 @@ const Information = () => {
         >
           RESET
         </button>
-        <button
-          type="submit"
-          className="btn"
-          style={{ background: "#69ab85" }}
-        >
+        <button type="submit" className="btn" style={{ background: "#69ab85" }}>
           SUBMIT
         </button>
       </form>

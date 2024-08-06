@@ -1,8 +1,113 @@
 .schedular-box{
     box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 8px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px;
     padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .selected{
     background-color: aqua;
+}
+
+.my-selected{
+    background-color: #69ab85;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.timing-schedular-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.timing-box{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+}
+
+.timing-box>div{
+    padding-block: 1.5rem;
+    border: 1px solid rgb(218, 218, 218);
+    line-height: 22px;
+    cursor: pointer;
+    position: relative;
+}
+
+.timing-box>div:hover{
+    background-color: rgba(105, 171, 133, 0.125);
+}
+
+.timing-box p{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.timing-options-box{
+    position: absolute;
+    top: 110%;
+    right: -15%;
+    display: none;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px;
+    background-color: #fff;
+    min-width: max-content;
+    z-index: 10;
+}
+
+.timing-options-box>li{
+    padding: 0.75rem;
+}
+
+.timing-options-box>li:hover{
+    background-color: rgba(105, 171, 133, 0.125);
+}
+
+.show{
+    display: block;
+}
+
+.selected-times-box{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 4rem;
+}
+
+.selected-time{
+    display: flex;
+    justify-content: space-between;
+}
+
+.selected-time>div{
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+}
+
+.selected-time>div::after{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transition: 0.3s all ease;
+}
+
+.selected-time>div:hover::after{
+    width: 100%;
+}
+
+.continue-btn{
+    background-color: #69ab85;
+    padding: 0.75rem 1.5rem;
+    color: #fff;
+    max-width: max-content;
+    margin-top: 1rem;
+    cursor: pointer;
 }

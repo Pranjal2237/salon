@@ -1,12 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import { bookingBanner } from "../../assets";
 import Appointment from "../../components/appointment";
 import Information from "../../components/information";
 import Confirmation from "../../components/confirmation";
+import { useSearchParams } from "react-router-dom";
 
 const Bookings = () => {
-  const [active, setActive] = useState("Your Info");
+  const [active, setActive] = useState("Choose Appointment");
+  const [isCategory, setIsCategory] = useState({ category: "" });
+  const [isAppointment, setIsAppointment] = useState({ category: "" });
+  const [timing, setTiming] = useState([]);
+  const [details, setDetails] = useState();
+  const [searchParams] = useSearchParams();
+  useEffect(() => {
+    if (searchParams.get("confirmation") == "success") {
+      setActive("Confirmation");
+    }
+  }, []);
+  // console.log(details);
+  // console.log(timing);
+  // console.log(isAppointment.category);
+  // console.log(isCategory.category);
   return (
     <div>
       <div className="booking-banner">
@@ -22,9 +37,26 @@ const Bookings = () => {
         ))}
       </ul>
       <div className="inline-wrapper padding-block">
-        {active == "Choose Appointment" && <Appointment />}
-        {active == "Your Info" && <Information />}
-        {active=="Confirmation" && <Confirmation />}
+        {active == "Choose Appointment" && (
+          <Appointment
+            setActive={setActive}
+            isAppointment={isAppointment}
+            isCategory={isCategory}
+            setIsAppointment={setIsAppointment}
+            setIsCategory={setIsCategory}
+            timing={timing}
+            setTiming={setTiming}
+          />
+        )}
+        {active == "Your Info" && (
+          <Information
+            setDetails={setDetails}
+          />
+        )}
+        {active == "Confirmation" && (
+          <Confirmation
+          />
+        )}
       </div>
       <div className="inline-wrapper padding-block reminder">
         <h1>REMINDER</h1>
