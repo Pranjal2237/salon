@@ -10,7 +10,7 @@
 }
 
 .my-selected{
-    background-color: #69ab85;
+    background-color: #FF0044;
     border-radius: 50%;
     color: #fff;
 }
@@ -104,7 +104,7 @@
 }
 
 .continue-btn{
-    background-color: #69ab85;
+    background-color: #FF0044;
     padding: 0.75rem 1.5rem;
     color: #fff;
     max-width: max-content;

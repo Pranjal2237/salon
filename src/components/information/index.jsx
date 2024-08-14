@@ -3,6 +3,7 @@ import "./style.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   name: "",
@@ -20,8 +21,9 @@ const FormSchema = yup.object({
 });
 
 const Information = ({
-  setDetails,
+  category,appointment,timing,servicePerson
 }) => {
+  const navigate=useNavigate();
   let {
     values,
     handleBlur,
@@ -34,15 +36,16 @@ const Information = ({
     initialValues,
     validationSchema: FormSchema,
     onSubmit: async (values, { resetForm }) => {
-      setDetails({
-        name: values.name,
-        phone: values.phone,
-        email: values.email,
-      });
+      if(localStorage.getItem("token"))
+        {
+        const token=localStorage.getItem("token");
       const { data } = await axios.get("http://localhost:4000/api/getkey");
       const {
-        data: { order },
-      } = await axios.post("http://localhost:4000/api/booking", { values });
+        data: { order,newOrder },
+      } = await axios.post("http://localhost:4000/api/booking", { category,appointment,timing,servicePerson },{
+        headers:{ Authorization: `Bearer ${token}` }
+      });
+      console.log(order);
       const options = {
         key: data.key,
         amount: "50000",
@@ -51,7 +54,7 @@ const Information = ({
         description: "Test Transaction",
         image: "https://example.com/your_logo",
         order_id: order.id,
-        callback_url: "http://localhost:4000/api/paymentVarification",
+        callback_url: `http://localhost:4000/api/paymentVarification?id=${newOrder._id}`,
         notes: {
           address: "Razorpay Corporate Office",
         },
@@ -62,6 +65,10 @@ const Information = ({
       const razor = new window.Razorpay(options);
       razor.open();
       resetForm();
+    }
+    else{
+      navigate("/user");
+    }
     },
   });
   return (
@@ -213,11 +220,11 @@ const Information = ({
           onClick={resetForm}
           type="button"
           className="btn"
-          style={{ background: "#69ab85" }}
+          style={{ background: "#FF0044" }}
         >
           RESET
         </button>
-        <button type="submit" className="btn" style={{ background: "#69ab85" }}>
+        <button type="submit" className="btn" style={{ background: "#FF0044" }}>
           SUBMIT
         </button>
       </form>

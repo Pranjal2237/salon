@@ -23,8 +23,53 @@
     gap: 3rem;
     font-weight: var(--fw-bolder);
     font-size: var(--fs-xs);
+    align-items: center;
 }
 
-.navigation-lists>a{
+.navigation-lists a,.navigation-lists p{
     color: #fff;
+}
+
+.navigation-lists button{
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    background-color: #FF0044;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+}
+
+.navigation-lists .subnav{
+    position: absolute;
+    top: 140%;
+    width: 200%;
+    color: #fff;
+    background-color: black;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    opacity: 0.8;
+}
+
+.navigation-lists .subnav>p{
+    padding: 1rem;
+    cursor: auto;
+}
+
+.navigation-lists .subnav>li{
+    font-size: 12px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.navigation-lists .subnav>li:hover{
+    background-color: #FF0044;
+}
+
+.navigation-lists .subnav button{
+    margin-top: 1rem;
 }

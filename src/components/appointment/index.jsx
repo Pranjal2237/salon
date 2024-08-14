@@ -22,7 +22,6 @@ const Appointment = ({
   timing,
   setTiming,
 }) => {
-  console.log(isCategory.category, isAppointment.category);
   return (
     <div>
       {isCategory.category.length == 0 ? (

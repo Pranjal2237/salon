@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import { bookingBanner } from "../../assets";
 import Appointment from "../../components/appointment";
 import Information from "../../components/information";
 import Confirmation from "../../components/confirmation";
@@ -11,17 +10,12 @@ const Bookings = () => {
   const [isCategory, setIsCategory] = useState({ category: "" });
   const [isAppointment, setIsAppointment] = useState({ category: "" });
   const [timing, setTiming] = useState([]);
-  const [details, setDetails] = useState();
   const [searchParams] = useSearchParams();
   useEffect(() => {
     if (searchParams.get("confirmation") == "success") {
       setActive("Confirmation");
     }
   }, []);
-  // console.log(details);
-  // console.log(timing);
-  // console.log(isAppointment.category);
-  // console.log(isCategory.category);
   return (
     <div>
       <div className="booking-banner">
@@ -50,7 +44,10 @@ const Bookings = () => {
         )}
         {active == "Your Info" && (
           <Information
-            setDetails={setDetails}
+            category={isCategory.category}
+            appointment={isAppointment.category}
+            timing={timing}
+            servicePerson="Alex"
           />
         )}
         {active == "Confirmation" && (

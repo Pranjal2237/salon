@@ -4,10 +4,12 @@ import { logo } from '../../assets'
 import { navigation } from '../../constants'
 import { Link, useLocation, useParams } from 'react-router-dom'
 
-const Navigation = () => {
+const Navigation = ({name,setUser}) => {
   const [isscroll, setIsScroll] = useState(false);
   const[active,setActive]=useState('about');
   const location=useLocation();
+  const [subnav,setSubnav]=useState(false);
+  console.log(name);
  
   useEffect(() => {
     window.addEventListener("scroll", (event) => {
@@ -18,6 +20,14 @@ const Navigation = () => {
       }
     });
   }, []);
+
+  const handleLogout=()=>{
+    if(localStorage.getItem("token"))
+    {
+      localStorage.removeItem("token");
+      setUser();
+    }
+  }
   return (
     <div className='navigation inline-wrapper' style={{backgroundColor:isscroll?'black':''}}>
       <div className='navigation-logo'>
@@ -28,18 +38,32 @@ const Navigation = () => {
       <ul className='navigation-lists'>
         {
           navigation.map(({option,link})=> (
-              <a href={link}>
+              <Link to={link}>
             <li>{option}</li>
             {
               active==link.slice(1) && <div style={{background:'#fff',height:'2px',width:'100%',marginTop:'3px'}}></div>
             }
-            </a>
+            </Link>
             )
           )
         }
         <Link>
           <li>CALL +(91)-9289409329</li>
         </Link>
+        {
+          name?<button onClick={()=>{setSubnav(!subnav)}}>{subnav?'CLOSE':'ACCOUNT'}
+          <div className='subnav' style={{display:subnav?'flex':'none'}}>
+            <p>Hi,{name}!</p>
+            <li>PROFILE</li>
+            <li>APPOINTMENT HISTORY</li>
+            <li>FUTURE APPOINTMENTS</li>
+            <button onClick={handleLogout}>LOGOUT</button>
+          </div>
+          </button>
+          :<Link to='/user'>
+          <button>LOGIN</button>
+        </Link>
+        }
       </ul>
     </div>
   )
