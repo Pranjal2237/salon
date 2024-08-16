@@ -60,13 +60,13 @@
     cursor: auto;
 }
 
-.navigation-lists .subnav>li{
+.navigation-lists .subnav li{
     font-size: 12px;
     padding: 1rem;
     transition: all 0.3s ease;
 }
 
-.navigation-lists .subnav>li:hover{
+.navigation-lists .subnav li:hover{
     background-color: #FF0044;
 }
 

@@ -4,7 +4,7 @@ import { logo } from '../../assets'
 import { navigation } from '../../constants'
 import { Link, useLocation, useParams } from 'react-router-dom'
 
-const Navigation = ({name,setUser}) => {
+const Navigation = ({name,setUser,isFutureAppointment,setIsFutureAppointment}) => {
   const [isscroll, setIsScroll] = useState(false);
   const[active,setActive]=useState('about');
   const location=useLocation();
@@ -55,8 +55,8 @@ const Navigation = ({name,setUser}) => {
           <div className='subnav' style={{display:subnav?'flex':'none'}}>
             <p>Hi,{name}!</p>
             <li>PROFILE</li>
-            <li>APPOINTMENT HISTORY</li>
-            <li>FUTURE APPOINTMENTS</li>
+            <Link to='/appointments'><li onClick={()=>{setIsFutureAppointment(false)}} >APPOINTMENT HISTORY</li></Link>
+            <Link to='/appointments'><li onClick={()=>{setIsFutureAppointment(true)}} >FUTURE APPOINTMENTS</li></Link>
             <button onClick={handleLogout}>LOGOUT</button>
           </div>
           </button>

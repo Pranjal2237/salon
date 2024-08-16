@@ -21,7 +21,7 @@ const FormSchema = yup.object({
 });
 
 const Information = ({
-  category,appointment,timing,servicePerson
+  category,appointment,timing,servicePerson,price
 }) => {
   const navigate=useNavigate();
   let {
@@ -42,7 +42,7 @@ const Information = ({
       const { data } = await axios.get("http://localhost:4000/api/getkey");
       const {
         data: { order,newOrder },
-      } = await axios.post("http://localhost:4000/api/booking", { category,appointment,timing,servicePerson },{
+      } = await axios.post("http://localhost:4000/api/booking", { category,appointment,timing,servicePerson,price },{
         headers:{ Authorization: `Bearer ${token}` }
       });
       console.log(order);

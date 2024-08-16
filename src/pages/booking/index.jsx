@@ -8,7 +8,7 @@ import { useSearchParams } from "react-router-dom";
 const Bookings = () => {
   const [active, setActive] = useState("Choose Appointment");
   const [isCategory, setIsCategory] = useState({ category: "" });
-  const [isAppointment, setIsAppointment] = useState({ category: "" });
+  const [isAppointment, setIsAppointment] = useState({ category: "",price:"" });
   const [timing, setTiming] = useState([]);
   const [searchParams] = useSearchParams();
   useEffect(() => {
@@ -46,6 +46,7 @@ const Bookings = () => {
           <Information
             category={isCategory.category}
             appointment={isAppointment.category}
+            price={isAppointment.price}
             timing={timing}
             servicePerson="Alex"
           />

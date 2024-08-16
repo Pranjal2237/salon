@@ -1,0 +1,28 @@
+.appointment-banner{
+    background-image: url('../../assets/images/appointment.png');
+    width: 100%;
+    height: 560px;
+    background-size: cover;
+    position: relative;
+}
+
+.appointments-box{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 0.5rem;
+    margin-block: 0.5rem;
+}
+
+.appointments-box>div{
+    background-color: #ffccda;
+    padding: 1rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.appointments-box>div>p{
+    font-size: 13px;
+}

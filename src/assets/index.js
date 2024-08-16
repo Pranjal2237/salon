@@ -18,3 +18,4 @@ export {default as image3} from './images/12.png';
 export {default as image4} from './images/13.png';
 export {default as image5} from './images/14.png';
 export {default as bookingBanner} from  './images/booking.jpg'
+export {default as appointmentBanner} from './images/appointment.png'

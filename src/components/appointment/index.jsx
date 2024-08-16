@@ -244,7 +244,15 @@ const Appointment = ({
           </>
         )}
       </div>
-      <Schedular setActive={setActive} timing={timing} setTiming={setTiming} />
+      {timing.length === 0 &&
+        isAppointment.category.length > 0 &&
+        isCategory.category.length > 0 && (
+          <Schedular
+            setActive={setActive}
+            timing={timing}
+            setTiming={setTiming}
+          />
+        )}
     </div>
   );
 };
